@@ -61,6 +61,10 @@ class StaffsController < ApplicationController
     end
   end
 
+  def csv
+    send_data Staff.to_csv, filename: 'staffs.csv', type: 'text/csv'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_staff
