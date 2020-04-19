@@ -65,6 +65,11 @@ class StaffsController < ApplicationController
     send_data Staff.to_csv, filename: 'staffs.csv', type: 'text/csv'
   end
 
+  def import
+    Staff.import_from_csv(params[:csv])
+    redirect_to staffs_path, notice: 'Staff was successfully imported.'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_staff
